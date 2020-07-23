@@ -82,7 +82,7 @@ action :create do
   execute "create-openvpn-tar-#{new_resource.client_name}" do
     cwd destination_path
     filelist = "ca.crt #{new_resource.client_name}.crt #{new_resource.client_name}.key #{client_file_basename}.ovpn"
-    filelist += " client/#{client_file_basename}.conf" if new_resource.create_bundle
+    filelist += " #{client_file_basename}.conf" if new_resource.create_bundle
     command "tar zcf #{bundle_filename} #{filelist}"
     creates bundle_full_path unless new_resource.force
   end
