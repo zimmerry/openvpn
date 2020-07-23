@@ -44,7 +44,7 @@ action :create do
 
   cleanup_name = "cleanup-old-bundle-#{new_resource.client_name}"
 
-  template "#{destination_path}/client/#{client_file_basename}.conf" do
+  template "#{destination_path}/#{client_file_basename}.conf" do
     source 'client.conf.erb'
     cookbook node['openvpn']['cookbook_user_conf']
     variables(client_cn: new_resource.client_name)
