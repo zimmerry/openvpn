@@ -29,7 +29,7 @@ action :create do
                       "#{new_resource.name}.conf.erb"
                     end
 
-  conf_location = if platform_family?('rhel') && node['platform_version'] >= '8'
+  conf_location = if platform_family?('rhel') && node['platform_version'].to_i >= 8
                     "/etc/openvpn/#{new_resource.name}/#{new_resource.name}.conf"
                   else
                     "/etc/openvpn/#{new_resource.name}.conf"
