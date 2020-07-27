@@ -25,6 +25,4 @@ else
   package 'openvpn'
 end
 
-# if node['platform_family'] == 'rhel' && node['platform_version'].to_i >= 8
-# package 'tar'
-# end
+package 'tar' if platform_family?('rhel') && node['platform_version'].to_i >= 8
